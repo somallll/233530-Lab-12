@@ -1,0 +1,498 @@
+Lab 12 LINQ Activity/Lab 12 LINQ.sln
+@@ -0,0 +1,25 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32505.173
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab 12 LINQ", "Lab 12 LINQ\Lab 12 LINQ.csproj", "{993F5EE0-D9A1-40E2-AC97-14A6E17CB327}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{993F5EE0-D9A1-40E2-AC97-14A6E17CB327}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{993F5EE0-D9A1-40E2-AC97-14A6E17CB327}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{993F5EE0-D9A1-40E2-AC97-14A6E17CB327}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{993F5EE0-D9A1-40E2-AC97-14A6E17CB327}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F8F8E413-4F32-4D47-B5D6-8207BDB204EB}
+	EndGlobalSection
+EndGlobal
+‎Lab 12 LINQ Activity/Lab 12 LINQ/Lab 12 LINQ.csproj
++11
+
+
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Lab_12_LINQ</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+</Project>
+‎Lab 12 LINQ Activity/Lab 12 LINQ/Program.cs
++120
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,120 @@
+﻿using System;
+namespace LINQ
+{
+    class IntroToLINQ
+    {
+        static void Main()
+        {
+            // The Three Parts of a LINQ Query:
+            // 1. Data source.
+            int[] numbers = new int[7] { 0, 1, 2, 3, 4, 5, 6 };
+            // 2. Query creation.
+            // numQuery is an 
+            var numQuery =
+            from num in
+            numbers
+            where (num % 2) == 0
+            select num;
+            // 3. Query 
+            foreach
+            (int num in numQuery)
+            {
+                Console.Write("{0,1} ", num);
+            }
+            foreach (int num in numQuery)
+            {
+                Console.Write("{0,1} ", num);
+            }
+            var evenNumQuery = from num in numbers
+                               where (num % 2) == 0
+                               select num;
+            int evenNumCount = evenNumQuery.Count();
+            var numQuery3 = (from num in numbers where (num % 2) == 0 select num).ToArray();
+            StudentClass sc = new
+            StudentClass();
+            sc.QueryHighScores(1,
+            90);
+            Console.WriteLine("Press any key  to exit"); Console.ReadKey();
+        }
+    }
+    public class StudentClass
+    {
+        protected enum GradeLevel
+        {
+            FirstYear = 1, SecondYear, ThirdYear,
+            FourthYear
+        }; protected class Student
+        {
+            public string FirstName
+            { get; set; }
+            public
+            string LastName
+            {
+                get;
+                set;
+            }
+            public int ID
+            {
+                get; set;
+            }
+            public
+            GradeLevel
+            Year; public
+            List<int>
+            ExamScores;
+        }
+        protected static List<Student> students = new List<Student>
+{
+        new Student {FirstName = "Terry", LastName ="Adams", ID = 120, Year = GradeLevel.SecondYear,
+        ExamScores = new List<int>{ 99, 82, 81, 79}},
+        new Student {FirstName = "Fadi", LastName ="Fakhouri", ID = 116, Year = GradeLevel.ThirdYear,
+        ExamScores = new List<int>{ 99, 86, 90, 94}},
+        new Student {FirstName = "Hanying", LastName = "Feng",ID = 117, Year = GradeLevel.FirstYear,
+        ExamScores = new List<int>{ 93, 92, 80, 87}},new Student {FirstName = "Cesar", LastName = "Garcia",ID = 114, Year = GradeLevel.FourthYear,
+        ExamScores = new List<int>{ 97, 89, 85, 82}},
+        new Student {FirstName = "Hugo", LastName ="Garcia", ID = 118, Year =GradeLevel.SecondYear,
+        ExamScores = new List<int>{ 92, 90, 83, 78}},
+        new Student {FirstName = "Sven", LastName ="Mortensen", ID = 113, Year =GradeLevel.FirstYear,
+        ExamScores = new List<int>{ 88, 94, 65, 91}},
+        new Student {FirstName = "Claire", LastName ="O'Donnell", ID = 112, Year = GradeLevel.FourthYear,
+        ExamScores = new List<int>{ 75, 84, 91, 39}},
+        new Student {FirstName = "Svetlana", LastName ="Omelchenko", ID = 111, Year = GradeLevel.SecondYear,
+        ExamScores = new List<int>{ 97, 92, 81, 60}},
+        new Student {FirstName = "Lance", LastName = "Tucker",ID = 119, Year = GradeLevel.ThirdYear,
+        ExamScores = new List<int>{ 68, 79, 88, 92}},
+        new Student {FirstName = "Michael", LastName ="Tucker", ID = 122, Year = GradeLevel.FirstYear,
+        ExamScores = new List<int>{ 94, 92, 91, 91}},
+        new Student {FirstName = "Eugene", LastName ="Zabokritski", ID = 121, Year = GradeLevel.FourthYear,
+        ExamScores = new List<int>{ 96, 85, 91, 60}}
+        };
+        protected static int
+        GetPercentile(Student s)
+        {
+            double avg =
+            s.ExamScores.Average();
+            return avg > 0 ?
+            (int)avg / 10 : 0;
+        }
+        public void QueryHighScores(int exam, int score)
+        {
+            var highScores = from student in students
+                             where student.ExamScores[exam] > score
+                             select new
+                             {
+                                 Name = student.FirstName,
+                                 Score =
+                             student.ExamScores[exam]
+                             };
+            foreach (var item in highScores)
+            {
+                Console.WriteLine("{0,-15}{1}", item.Name, item.Score);
+            }
+        }
+    }
+}
+‎Lab 12 LINQ Activity/Lab 12 LINQ/bin/Debug/net6.0/Lab 12 LINQ.deps.json
++23
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Lab 12 LINQ/1.0.0": {
+        "runtime": {
+          "Lab 12 LINQ.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Lab 12 LINQ/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
+‎Lab 12 LINQ Activity/Lab 12 LINQ/bin/Debug/net6.0/Lab 12 LINQ.dll
+10.5 KB
+Binary file not shown.
+‎Lab 12 LINQ Activity/Lab 12 LINQ/bin/Debug/net6.0/Lab 12 LINQ.exe
+146 KB
+Binary file not shown.
+‎Lab 12 LINQ Activity/Lab 12 LINQ/bin/Debug/net6.0/Lab 12 LINQ.pdb
+11 KB
+Binary file not shown.
+‎Lab 12 LINQ Activity/Lab 12 LINQ/bin/Debug/net6.0/Lab 12 LINQ.runtimeconfig.json
++9
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,9 @@
+{
+  "runtimeOptions": {
+    "tfm": "net6.0",
+    "framework": {
+      "name": "Microsoft.NETCore.App",
+      "version": "6.0.0"
+    }
+  }
+}
+‎Lab 12 LINQ Activity/Lab 12 LINQ/obj/Debug/net6.0/Lab 12 LINQ.AssemblyInfo.cs
++23
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,23 @@
+//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//     Runtime Version:4.0.30319.42000
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+using System;
+using System.Reflection;
+[assembly: System.Reflection.AssemblyCompanyAttribute("Lab 12 LINQ")]
+[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyProductAttribute("Lab 12 LINQ")]
+[assembly: System.Reflection.AssemblyTitleAttribute("Lab 12 LINQ")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
+// Generated by the MSBuild WriteCodeFragment class.
+‎Lab 12 LINQ Activity/Lab 12 LINQ/obj/Debug/net6.0/Lab 12 LINQ.AssemblyInfoInputs.cache
++1
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1 @@
+74255f3c9a1c7cbf33d71c741c6e324c9d8ecf2b
+‎Lab 12 LINQ Activity/Lab 12 LINQ/obj/Debug/net6.0/Lab 12 LINQ.GeneratedMSBuildEditorConfig.editorconfig
++10
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,10 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Lab_12_LINQ
+build_property.ProjectDir = C:\Users\233558\source\repos\Lab 12 LINQ\Lab 12 LINQ\
+‎Lab 12 LINQ Activity/Lab 12 LINQ/obj/Debug/net6.0/Lab 12 LINQ.GlobalUsings.g.cs
++8
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,8 @@
+// <auto-generated/>
+global using global::System;
+global using global::System.Collections.Generic;
+global using global::System.IO;
+global using global::System.Linq;
+global using global::System.Net.Http;
+global using global::System.Threading;
+global using global::System.Threading.Tasks;
+‎Lab 12 LINQ Activity/Lab 12 LINQ/obj/Debug/net6.0/Lab 12 LINQ.assets.cache
+217 Bytes
+Binary file not shown.
+‎Lab 12 LINQ Activity/Lab 12 LINQ/obj/Debug/net6.0/Lab 12 LINQ.csproj.AssemblyReference.cache
+88.8 KB
+Binary file not shown.
+‎Lab 12 LINQ Activity/Lab 12 LINQ/obj/Debug/net6.0/Lab 12 LINQ.csproj.BuildWithSkipAnalyzers
+Whitespace-only changes.
+‎Lab 12 LINQ Activity/Lab 12 LINQ/obj/Debug/net6.0/Lab 12 LINQ.csproj.CoreCompileInputs.cache
++1
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1 @@
+a6eb3ea3cdaa968e2228e24f51cf60c1268977c9
+‎Lab 12 LINQ Activity/Lab 12 LINQ/obj/Debug/net6.0/Lab 12 LINQ.csproj.FileListAbsolute.txt
++15
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,15 @@
+C:\Users\233558\source\repos\Lab 12 LINQ\Lab 12 LINQ\obj\Debug\net6.0\Lab 12 LINQ.csproj.AssemblyReference.cache
+C:\Users\233558\source\repos\Lab 12 LINQ\Lab 12 LINQ\obj\Debug\net6.0\Lab 12 LINQ.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\233558\source\repos\Lab 12 LINQ\Lab 12 LINQ\obj\Debug\net6.0\Lab 12 LINQ.AssemblyInfoInputs.cache
+C:\Users\233558\source\repos\Lab 12 LINQ\Lab 12 LINQ\obj\Debug\net6.0\Lab 12 LINQ.AssemblyInfo.cs
+C:\Users\233558\source\repos\Lab 12 LINQ\Lab 12 LINQ\obj\Debug\net6.0\Lab 12 LINQ.csproj.CoreCompileInputs.cache
+C:\Users\233558\source\repos\Lab 12 LINQ\Lab 12 LINQ\bin\Debug\net6.0\Lab 12 LINQ.exe
+C:\Users\233558\source\repos\Lab 12 LINQ\Lab 12 LINQ\bin\Debug\net6.0\Lab 12 LINQ.deps.json
+C:\Users\233558\source\repos\Lab 12 LINQ\Lab 12 LINQ\bin\Debug\net6.0\Lab 12 LINQ.runtimeconfig.json
+C:\Users\233558\source\repos\Lab 12 LINQ\Lab 12 LINQ\bin\Debug\net6.0\Lab 12 LINQ.dll
+C:\Users\233558\source\repos\Lab 12 LINQ\Lab 12 LINQ\bin\Debug\net6.0\Lab 12 LINQ.pdb
+C:\Users\233558\source\repos\Lab 12 LINQ\Lab 12 LINQ\obj\Debug\net6.0\Lab 12 LINQ.dll
+C:\Users\233558\source\repos\Lab 12 LINQ\Lab 12 LINQ\obj\Debug\net6.0\refint\Lab 12 LINQ.dll
+C:\Users\233558\source\repos\Lab 12 LINQ\Lab 12 LINQ\obj\Debug\net6.0\Lab 12 LINQ.pdb
+C:\Users\233558\source\repos\Lab 12 LINQ\Lab 12 LINQ\obj\Debug\net6.0\Lab 12 LINQ.genruntimeconfig.cache
+C:\Users\233558\source\repos\Lab 12 LINQ\Lab 12 LINQ\obj\Debug\net6.0\ref\Lab 12 LINQ.dll
+‎Lab 12 LINQ Activity/Lab 12 LINQ/obj/Debug/net6.0/Lab 12 LINQ.dll
+10.5 KB
+Binary file not shown.
+‎Lab 12 LINQ Activity/Lab 12 LINQ/obj/Debug/net6.0/Lab 12 LINQ.genruntimeconfig.cache
++1
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1 @@
+362d3160aebbb30f7c56ff9d5a5d1ed685db55d6
+‎Lab 12 LINQ Activity/Lab 12 LINQ/obj/Debug/net6.0/Lab 12 LINQ.pdb
+11 KB
+Binary file not shown.
+‎Lab 12 LINQ Activity/Lab 12 LINQ/obj/Debug/net6.0/apphost.exe
+146 KB
+Binary file not shown.
+‎Lab 12 LINQ Activity/Lab 12 LINQ/obj/Debug/net6.0/ref/Lab 12 LINQ.dll
+7 KB
+Binary file not shown.
+‎Lab 12 LINQ Activity/Lab 12 LINQ/obj/Debug/net6.0/refint/Lab 12 LINQ.dll
+7 KB
+Binary file not shown.
+‎Lab 12 LINQ Activity/Lab 12 LINQ/obj/Lab 12 LINQ.csproj.nuget.dgspec.json
++66
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,66 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\233558\\source\\repos\\Lab 12 LINQ\\Lab 12 LINQ\\Lab 12 LINQ.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\233558\\source\\repos\\Lab 12 LINQ\\Lab 12 LINQ\\Lab 12 LINQ.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\233558\\source\\repos\\Lab 12 LINQ\\Lab 12 LINQ\\Lab 12 LINQ.csproj",
+        "projectName": "Lab 12 LINQ",
+        "projectPath": "C:\\Users\\233558\\source\\repos\\Lab 12 LINQ\\Lab 12 LINQ\\Lab 12 LINQ.csproj",
+        "packagesPath": "C:\\Users\\233558\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\233558\\source\\repos\\Lab 12 LINQ\\Lab 12 LINQ\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\233558\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
+‎Lab 12 LINQ Activity/Lab 12 LINQ/obj/Lab 12 LINQ.csproj.nuget.g.props
++16
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <RestoreSuccess Condition=" '$(RestoreSuccess)' == '' ">True</RestoreSuccess>
+    <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
+    <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
+    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\233558\.nuget\packages\;C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages</NuGetPackageFolders>
+    <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.2.0</NuGetToolVersion>
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <SourceRoot Include="C:\Users\233558\.nuget\packages\" />
+    <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
+  </ItemGroup>
+</Project>
+‎Lab 12 LINQ Activity/Lab 12 LINQ/obj/Lab 12 LINQ.csproj.nuget.g.targets
++2
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" />
+‎Lab 12 LINQ Activity/Lab 12 LINQ/obj/project.assets.json
++72
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,72 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {}
+  },
+  "libraries": {},
+  "projectFileDependencyGroups": {
+    "net6.0": []
+  },
+  "packageFolders": {
+    "C:\\Users\\233558\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\233558\\source\\repos\\Lab 12 LINQ\\Lab 12 LINQ\\Lab 12 LINQ.csproj",
+      "projectName": "Lab 12 LINQ",
+      "projectPath": "C:\\Users\\233558\\source\\repos\\Lab 12 LINQ\\Lab 12 LINQ\\Lab 12 LINQ.csproj",
+      "packagesPath": "C:\\Users\\233558\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\233558\\source\\repos\\Lab 12 LINQ\\Lab 12 LINQ\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\233558\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
+‎Lab 12 LINQ Activity/Lab 12 LINQ/obj/project.nuget.cache
++8
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,8 @@
+{
+  "version": 2,
+  "dgSpecHash": "fEMmjCLoskaWHQlQUv9dnrhdoDH+ZSEYGRtgACZjf9m3kxsatFqZo+Wrfmp7p2qY3SIq3qUSRoRFw7eTdI132A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\233558\\source\\repos\\Lab 12 LINQ\\Lab 12 LINQ\\Lab 12 LINQ.csproj",
+  "expectedPackageFiles": [],
+  "logs": []
+}
