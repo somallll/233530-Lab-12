@@ -1,0 +1,84 @@
+
++25
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,25 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32505.173
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderInformationApp", "OrderInformationApp\OrderInformationApp.csproj", "{488360D2-B24B-4C4A-9038-FFA17BA54A0A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{488360D2-B24B-4C4A-9038-FFA17BA54A0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{488360D2-B24B-4C4A-9038-FFA17BA54A0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{488360D2-B24B-4C4A-9038-FFA17BA54A0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{488360D2-B24B-4C4A-9038-FFA17BA54A0A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6C397BD5-E81A-44C0-BE4A-1DDC706A1D4B}
+	EndGlobalSection
+EndGlobal
+‎Lab 12 Task 1/OrderInformationApp/Address.cs
++12
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,12 @@
+﻿public class Address
+{
+    public string Street { get; set; }
+    public string City { get; set; }
+    public string State { get; set; }
+    public string ZipCode { get; set; }
+    public override string ToString()
+    {
+        return $"{Street}, {City}, {State} {ZipCode}";
+    }
+}
+
+@@ -0,0 +1,25 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32505.173
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderInformationApp", "OrderInformationApp\OrderInformationApp.csproj", "{488360D2-B24B-4C4A-9038-FFA17BA54A0A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{488360D2-B24B-4C4A-9038-FFA17BA54A0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{488360D2-B24B-4C4A-9038-FFA17BA54A0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{488360D2-B24B-4C4A-9038-FFA17BA54A0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{488360D2-B24B-4C4A-9038-FFA17BA54A0A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6C397BD5-E81A-44C0-BE4A-1DDC706A1D4B}
+	EndGlobalSection
+EndGlobal
+‎Lab 12 Task 1/OrderInformationApp/Address.cs
++12
+Original file line number	Diff line number	Diff line change
+@@ -0,0 +1,12 @@
+﻿public class Address
+{
+    public string Street { get; set; }
+    public string City { get; set; }
+    public string State { get; set; }
+    public string ZipCode { get; set; }
+    public override string ToString()
+    {
+        return $"{Street}, {City}, {State} {ZipCode}";
+    }
+}
